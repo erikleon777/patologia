@@ -210,94 +210,600 @@
     <script>
         // Datos de las preguntas (solo algunas como ejemplo)
         const questions = [
-            {
+{
                 text: "El factor de riesgo más importante para la disección aórtica es",
-                options: ["Ateroesclerosis", "Sífilis terciaria", "Hipertensión arterial", "Aneurisma falso", "Ninguno"],
+                options: [
+                    "Ateroesclerosis",
+                    "Sífilis terciaria",
+                    "Hipertensión arterial",
+                    "Aneurisma falso",
+                    "Ninguno"
+                ],
                 correctIndex: 2
             },
             {
                 text: "Qué patologías pueden estar relacionadas con bronquiectasias?",
-                options: ["Todas", "Tumores que produzcan obstrucción bronquial", "Síndrome de Kartagener", "Fibrosis quística", "Neumonitis necrotizante"],
+                options: [
+                    "Todas",
+                    "Tumores que produzcan obstrucción bronquial",
+                    "Síndrome de Kartagener",
+                    "Fibrosis quística",
+                    "Neumonitis necrotizante"
+                ],
                 correctIndex: 0
             },
             {
                 text: "El tabaquismo aumenta la incidencia de cáncer de:",
-                options: ["Todos", "Esófago", "Páncreas", "Vejiga urinaria", "Pulmón"],
+                options: [
+                    "Todos",
+                    "Esófago",
+                    "Páncreas",
+                    "Vejiga urinaria",
+                    "Pulmón"
+                ],
                 correctIndex: 0
             },
             {
                 text: "El cor pulmonale crónico es secundario a:",
-                options: ["Fibrosis pulmonar intersticial", "Hipertensión sistémica", "Aneurismas sifilíticos", "Coartación de la aorta", "Ninguno"],
+                options: [
+                    "Fibrosis pulmonar intersticial",
+                    "Hipertensión sistémica",
+                    "Aneurismas sifilíticos",
+                    "Coartación de la aorta",
+                    "Ninguno"
+                ],
                 correctIndex: 0
             },
             {
                 text: "La esclerosis cardiaca es una condición patológica asociada a:",
-                options: ["Hipertensión arterial", "Coartación aórtica", "Insuficiencia ventricular derecha", "Hipertrofia ventricular izquierda", "Ninguno"],
+                options: [
+                    "Hipertensión arterial",
+                    "Coartación aórtica",
+                    "Insuficiencia ventricular derecha",
+                    "Hipertrofia ventricular izquierda",
+                    "Ninguno"
+                ],
                 correctIndex: 0
             },
             {
                 text: "Qué forma de endocarditis presentan vegetaciones:",
-                options: ["Todas", "E. infecciosa", "E. Libman Sacks", "E. trombótica no bacteriana", "E. reumática aguda"],
+                options: [
+                    "Todas",
+                    "E. infecciosa",
+                    "E. Libman Sacks",
+                    "E. trombótica no bacteriana",
+                    "E. reumática aguda"
+                ],
                 correctIndex: 0
             },
             {
                 text: "En la evolución del infarto de miocardio, el tejido de granulación y depósito de colágeno aparece en:",
-                options: ["10-14 días", "2-8 semanas", "12-24 hrs", "Ninguno", "3-7 días"],
+                options: [
+                    "10-14 días",
+                    "2-8 semanas",
+                    "12-24 hrs",
+                    "Ninguno",
+                    "3-7 días"
+                ],
                 correctIndex: 0
             },
             {
                 text: "El Helicobacter pylori es causante de los siguientes, EXCEPTO:",
-                options: ["Linfoma gástrico", "Gastritis granulomatosa", "Gastritis crónica", "Adenocarcinoma gástrico", "Enfermedad de Menetrier"],
+                options: [
+                    "Linfoma gástrico",
+                    "Gastritis granulomatosa",
+                    "Gastritis crónica",
+                    "Adenocarcinoma gástrico",
+                    "Enfermedad de Menetrier"
+                ],
                 correctIndex: 1
             },
             {
                 text: "En la hipertensión maligna los vasos presentan los siguientes cambios en su pared, EXCEPTO:",
-                options: ["Depósitos hialinos", "Focos de calcificación", "Engrosamiento concéntrico", "Duplicación de la membrana basal", "Estenosis luminal"],
+                options: [
+                    "Depósitos hialinos",
+                    "Focos de calcificación",
+                    "Engrosamiento concéntrico",
+                    "Duplicación de la membrana basal",
+                    "Estenosis luminal"
+                ],
                 correctIndex: 0
             },
             {
                 text: "Lo siguiente se relaciona con el esófago de Barret, EXCEPTO:",
-                options: ["La mayoría de los portadores no desarrollan tumor maligno", "Consecuencia de reflujo GE", "Mucosa color rojo asalmonada", "Solo puede identificarse por endoscopía y biopsia", "Metaplasia escamosa"],
+                options: [
+                    "La mayoría de los portadores no desarrollan tumor maligno",
+                    "Consecuencia de reflujo GE",
+                    "Mucosa color rojo asalmonada",
+                    "Solo puede identificarse por endoscopía y biopsia",
+                    "Metaplasia escamosa"
+                ],
                 correctIndex: 4
             },
             {
                 text: "Qué diagnostico sospecharía si en una biopsia de intestino delgado se encuentran macrófagos con hematíes en su interior:",
-                options: ["Salmonelosis", "Esprúe tropical", "Enfermedad celiaca", "Amebiasis", "Ninguna"],
+                options: [
+                    "Salmonelosis",
+                    "Esprúe tropical",
+                    "Enfermedad celiaca",
+                    "Amebiasis",
+                    "Ninguna"
+                ],
                 correctIndex: 0
             },
             {
                 text: "La enfermedad más frecuente asociada con la osteoartropatía hipertrófica es:",
-                options: ["Carcinoma broncogenico", "Endocarditis infecciosa", "Enfermedad cardiaca congénita", "Colitis ulcerosa", "Mesotelioma pleural"],
+                options: [
+                    "Carcinoma broncogenico",
+                    "Endocarditis infecciosa",
+                    "Enfermedad cardiaca congénita",
+                    "Colitis ulcerosa",
+                    "Mesotelioma pleural"
+                ],
                 correctIndex: 0
             },
             {
                 text: "La afectación de la TBC miliar se presenta principalmente en:",
-                options: ["Todos", "Médula ósea", "Bazo", "Adrenales", "Hígado"],
+                options: [
+                    "Todos",
+                    "Médula ósea",
+                    "Bazo",
+                    "Adrenales",
+                    "Hígado"
+                ],
                 correctIndex: 0
             },
             {
                 text: "Las siguientes son causas de insuficiencia cardiaca izquierda, EXCEPTO:",
-                options: ["Cor pulmonale", "Estenosis mitral", "Hipertensión arterial sistémica", "Estenosis aórtica", "Pericarditis constrictivas"],
+                options: [
+                    "Cor pulmonale",
+                    "Estenosis mitral",
+                    "Hipertensión arterial sistémica",
+                    "Estenosis aórtica",
+                    "Pericarditis constrictivas"
+                ],
                 correctIndex: 0
             },
             {
                 text: "La cardiopatía congénita más común:",
-                options: ["Comunicación interventricular", "Comunicación interauricular", "Tetralogía de Fallot", "Conducto arterioso persistente", "Ninguno"],
+                options: [
+                    "Comunicación interventricular",
+                    "Comunicación interauricular",
+                    "Tetralogía de Fallot",
+                    "Conducto arterioso persistente",
+                    "Ninguno"
+                ],
                 correctIndex: 0
             },
             {
                 text: "El engrosamiento focal de las paredes de arterias musculares por hiperplasia y fibrosis de la media e íntima puede causar:",
-                options: ["Displasia fibromuscular", "Aneurisma sacular", "Fistula arteriovenosas", "Conducto arterioso persistente", "Ninguno"],
+                options: [
+                    "Displasia fibromuscular",
+                    "Aneurisma sacular",
+                    "Fistula arteriovenosas",
+                    "Conducto arterioso persistente",
+                    "Ninguno"
+                ],
                 correctIndex: 0
             },
             {
                 text: "Causa neurológica de hipertensión secundaria:",
-                options: ["Apnea del sueño", "Feocromocitoma", "Tumores productores de renina", "Embarazo", "Acromegalia"],
+                options: [
+                    "Apnea del sueño",
+                    "Feocromocitoma",
+                    "Tumores productores de renina",
+                    "Embarazo",
+                    "Acromegalia"
+                ],
                 correctIndex: 0
             },
             {
                 text: "Qué vasos sanguíneos son los principales puntos de resistencia fisiológico al flujo sanguíneo:",
-                options: ["Arteriolas", "Vénulas poscapilares", "Lecho capilar", "Ninguna", "Arteriolas musculares"],
+                options: [
+                    "Arteriolas",
+                    "Vénulas poscapilares",
+                    "Lecho capilar",
+                    "Ninguna",
+                    "Arteriolas musculares"
+                ],
+                correctIndex: 0
+            },
+            {
+                text: "El mediador químico esencial para que los macrófagos sean capaces de contener la infección por M. tuberculosis es:",
+                options: [
+                    "Interferón gamma",
+                    "Todos",
+                    "Factor de necrosis tumoral",
+                    "IL-12",
+                    "Opsonina C3b"
+                ],
+                correctIndex: 0
+            },
+            {
+                text: "Los siguientes enunciados acerca de la esofagitis por reflujo son ciertos, EXCEPTO:",
+                options: [
+                    "Puede presentarse en lactantes y niños",
+                    "La hernia hiatal es una causa frecuente",
+                    "Afecta al esofago distal",
+                    "Hay relajación del esfinter inferior",
+                    "Puede desencadenarse por distención gástrica"
+                ],
+                correctIndex: 0
+            },
+            {
+                text: "El asma atópico se caracteriza por:",
+                options: [
+                    "Hay elevadas concentraciones de IgE",
+                    "Alergenos ambientales",
+                    "Pueden ser desencadenadas por infecciones víricas",
+                    "Es frecuente que existan antecedentes familiares",
+                    "No tiene signos de sensibilización al alergeno"
+                ],
+                correctIndex: 0
+            },
+            {
+                text: "En la patogenia de la ateroesclerosis, las estrías grasas se forman por:",
+                options: [
+                    "Fagocitosis de lípidos por macrófagos y miocitos lisos",
+                    "Presencia de lípidos extracelulares",
+                    "Aumento de la permeabilidad vascular",
+                    "Migración de miocitos lisos a la intima",
+                    "Es frecuente que existan antecedentes familiares",
+                    "Depósito de matriz extracelular"
+                ],
+                correctIndex: 0
+            },
+            {
+                text: "Las siguientes son causas de hipertensión pulmonar, EXCEPTO:",
+                options: [
+                    "Enfisema pulmonar",
+                    "Enfermedad pulmonar obstructiva",
+                    "Tromboembolia a repetición",
+                    "Enfermedades autoinmunitarias",
+                    "Antecedentes de cardiopatía congénita"
+                ],
+                correctIndex: 0
+            },
+            {
+                text: "En la insuficiencia cardiaca la disfunción sistólica se produce en ciertas condiciones como ser:",
+                options: [
+                    "Cardiopatía isquémica",
+                    "Hipertrofia ventricular izquierda",
+                    "Fibrosis miocárdica",
+                    "Pericarditis constrictiva",
+                    "Ninguna"
+                ],
+                correctIndex: 0
+            },
+            {
+                text: "Son complicaciones del infarto de miocardio lo siguiente, EXCEPTO:",
+                options: [
+                    "Miocarditis",
+                    "Arritmias",
+                    "Rotura miocárdica",
+                    "Pericarditis",
+                    "Insuficiencia cardiaca progresiva"
+                ],
+                correctIndex: 0
+            },
+            {
+                text: "El carcinoma broncógeno que se caracteriza por producir síndromes paraneoplásicos es:",
+                options: [
+                    "Ninguno",
+                    "CA. Epidermoide",
+                    "Adenocarcinoma",
+                    "Mesotelioma",
+                    "Tumores mediastínicos"
+                ],
+                correctIndex: 0
+            },
+            {
+                text: "Son organismos responsables de la forma aguda de endocarditis infecciosa:",
+                options: [
+                    "Ninguno",
+                    "Neisseria gonorreae",
+                    "Streptococcus viridians",
+                    "Escherichia coli",
+                    "Tripanosoma cruzi"
+                ],
+                correctIndex: 0
+            },
+            {
+                text: "El alcoholismo crónico se asocia a la miocardiopatía:",
+                options: [
+                    "Dilatada",
+                    "Infiltrativa",
+                    "Restrictiva",
+                    "Hipertrófica",
+                    "Ninguna"
+                ],
+                correctIndex: 0
+            },
+            {
+                text: "Recién nacido cianótico, los hallazgos de un cabalgamiento de la aorta sobre el defecto interventricular sugieren el diagnostico de:",
+                options: [
+                    "Ninguno",
+                    "Transposición de los grandes vasos",
+                    "Persistencia del agujero oval",
+                    "Conducto arterioso persistente",
+                    "Persistencia del tronco arterioso"
+                ],
+                correctIndex: 0
+            },
+            {
+                text: "Una atelectasia por reabsorción puede producirse por lo siguiente, EXCEPTO:",
+                options: [
+                    "Neumotórax",
+                    "Tapones de moco",
+                    "Asma bronquial",
+                    "Bronquitis crónica",
+                    "Bronquiectasia"
+                ],
+                correctIndex: 0
+            },
+            {
+                text: "Los aneurismas pueden ocasionar lo siguiente, EXCEPTO",
+                options: [
+                    "Hipertensión arterial",
+                    "Presión sobre estructuras adyacentes",
+                    "Embolia de ateroma o trombo mural",
+                    "Obstrucción en arterias medianas o mecánicas con lesión isquémica",
+                    "Rotura en la cavidad peritoneal"
+                ],
+                correctIndex: 0
+            },
+            {
+                text: "Si en una biopsia de pulmón encontramos numerosos macrófagos cargados de hemosiderina, consideramos la posibilidad diagnóstica de:",
+                options: [
+                    "Insuficiencia cardiaca izquierda",
+                    "Aneurisma sifilítico",
+                    "Insuficiencia cardiaca derecha",
+                    "Cuadro anginoso",
+                    "Ninguno"
+                ],
+                correctIndex: 0
+            },
+            {
+                text: "El cor pulmonale suele ser una complicación de lo siguiente, EXCEPTO:",
+                options: [
+                    "Enfisema pulmonar",
+                    "Fibrosis pulmonar intersticial",
+                    "Fibrosis quística",
+                    "Hipertensión pulmonar",
+                    "Bronquiectasia"
+                ],
+                correctIndex: 0
+            },
+            {
+                text: "En la enfermedad pulmonar obstructiva crónica, el trastorno que afecta al acino respiratorio es:",
+                options: [
+                    "Enfisema",
+                    "Asma bronquial",
+                    "Bronquiectasia",
+                    "Bronquitis crónica",
+                    "Ninguno"
+                ],
+                correctIndex: 0
+            },
+            {
+                text: "Lo siguiente se relaciona con la tuberculosis secundaria:",
+                options: [
+                    "Resultado de una reactivación de una lesión latente",
+                    "Se observa en personas no sensibilizadas",
+                    "Afecta clásicamente las bases de los lóbulos",
+                    "Hay mayor compromiso ganglionar que en la primaria",
+                    "Ninguna"
+                ],
+                correctIndex: 0
+            },
+            {
+                text: "Las siguientes condiciones predisponen a la esofagitis por reflujo, EXCEPTO:",
+                options: [
+                    "Ulceras pépticas",
+                    "Hernia hiatal",
+                    "Síndrome de Mallory Weis",
+                    "Consumo de alcohol",
+                    "Vómitos persistentes"
+                ],
+                correctIndex: 0
+            },
+            {
+                text: "La localización de la tuberculosis pulmonar secundaria se da en:",
+                options: [
+                    "Vértice de uno o ambos pulmones",
+                    "En una o ambas bases",
+                    "En el lóbulo medio",
+                    "Bronquios principales",
+                    "Ninguno"
+                ],
+                correctIndex: 0
+            },
+            {
+                text: "Una de las siguientes se relaciona con la gastritis aguda, EXCEPTO:",
+                options: [
+                    "Helicobacter pylori",
+                    "Alcoholismo y tabaquismo",
+                    "Estrés importante",
+                    "Abuso de aspirina",
+                    "Isquemia"
+                ],
+                correctIndex: 0
+            },
+            {
+                text: "Ejemplo de endocarditis no vegetante",
+                options: [
+                    "Ninguna",
+                    "E. infecciosa",
+                    "E. trombótica no bacteriana",
+                    "E. reumática aguda",
+                    "E. de Libman Sacks"
+                ],
+                correctIndex: 2
+            },
+            {
+                text: "La forma de angina de pecho causada por desequilibrios de la perfusión coronaria es:",
+                options: [
+                    "A. típica",
+                    "A. inestable",
+                    "A. de Prinzmetal",
+                    "A. progresiva",
+                    "A. atípica"
+                ],
+                correctIndex: 0
+            },
+            {
+                text: "La enfermedad de Chagas puede manifestarse en esófago como:",
+                options: [
+                    "Acalasia secundaria",
+                    "Fistula",
+                    "Divertículo",
+                    "Todas",
+                    "Ninguna"
+                ],
+                correctIndex: 0
+            },
+            {
+                text: "El humo del tabaco es causa de las siguientes patologías pulmonares, EXCEPTO:",
+                options: [
+                    "Bronquiectasia",
+                    "Bronquitis",
+                    "Enfisema centrolobulillar",
+                    "Bronquitis crónica",
+                    "Enfisema panlobulillar"
+                ],
+                correctIndex: 0
+            },
+            {
+                text: "El fenómeno de Raynaud se caracteriza por lo siguiente, EXCEPTO:",
+                options: [
+                    "Inicia con modificación estructural de las paredes arteriales",
+                    "Vasoconstricción exagerada de las arterias digitales",
+                    "Cianosis o palidez paroxística de los dedos",
+                    "Vasoconstricción central y cianosis distal",
+                    "Respuesta a un estrés emocional"
+                ],
+                correctIndex: 0
+            },
+            {
+                text: "La hipercalcemia es un síndrome paraneoplásico del cáncer pulmonar y está en relación principalmente con:",
+                options: [
+                    "CA. epidermoide",
+                    "CA. microcítico",
+                    "Adenocarcinoma",
+                    "CA. de células grandes",
+                    "Ninguno"
+                ],
+                correctIndex: 0
+            },
+            {
+                text: "En el cáncer gástrico, las células en \"anillo de sello\" son un componente de:",
+                options: [
+                    "De tipo infiltrado difuso",
+                    "Adenocarcinoma de tipo intestinal",
+                    "Adenocarcinoma poliploide",
+                    "Tumores voluminosos elevados con ulceración central",
+                    "Ninguno"
+                ],
+                correctIndex: 0
+            },
+            {
+                text: "La linitis plásticas es una forma de cáncer gástrico caracterizado por los siguientes:",
+                options: [
+                    "Provoca una reacción desmoplásica en la pared gástrica",
+                    "Tiene directa relación con el H. pylori",
+                    "Presentar engrosamiento difuso de la pared",
+                    "Hay perdida de proteína cadherina E",
+                    "Las células neoplásicas contienen grandes vacuolas de mucina"
+                ],
+                correctIndex: 0
+            },
+            {
+                text: "En la enfermedad de Chagas aguda el daño más importante es a nivel de:",
+                options: [
+                    "Corazón",
+                    "Músculo esquelético",
+                    "Pulmones",
+                    "Esófago",
+                    "Ninguno"
+                ],
+                correctIndex: 0
+            },
+            {
+                text: "El síndrome de Zollinger-Ellison está producido por:",
+                options: [
+                    "Gastrinoma",
+                    "Insulinomas",
+                    "Glucagonomas",
+                    "Tumor carcinoide",
+                    "Ninguno"
+                ],
+                correctIndex: 0
+            },
+            {
+                text: "La tos ferina se caracteriza por lo siguiente, EXCEPTO:",
+                options: [
+                    "Los alveolos permanecen infectados",
+                    "En casos graves erosiona la mucosa bronquial",
+                    "Es causado por la Bordetella pertussis",
+                    "Episodios paroxísticos de tos violenta",
+                    "Bordetella coloniza el borde de cepillo del epitelio bronquial e invade los macrófagos"
+                ],
+                correctIndex: 0
+            },
+            {
+                text: "La base de la patogenia de las enfermedades coronarias cerebral y vascular periférica, y la causa de mayor comorbilidad que ningún otro trastorno en el mundo occidental es:",
+                options: [
+                    "Ateroesclerosis",
+                    "Tromboembolismo",
+                    "Arterioesclerosis",
+                    "Infarto de miocardio",
+                    "Hipertensión arterial",
+                    "Ninguno"
+                ],
+                correctIndex: 0
+            },
+            {
+                text: "La linitis plásticas es una forma de cáncer gástrico caracterizado por los siguientes, EXCEPTO:",
+                options: [
+                    "Las células neoplásicas contienen vacuolas apicales de mucina",
+                    "Presenta engrosamiento difuso de la pared",
+                    "Provoca una reacción desmoplásica en la pared gástrica",
+                    "Hay perdida de las proteínas cadherinas E",
+                    "Existen aplanamiento de los pliegues gástricos"
+                ],
+                correctIndex: 0
+            },
+            {
+                text: "Las siguientes son características de los hemangiomas cavernosos, EXCEPTO:",
+                options: [
+                    "Histológicamente muestra una masa bien encapsulada",
+                    "Presenta grandes espacios vasculares dilatados llenos de sangre",
+                    "Son mas infiltrantes que los H. capilaris",
+                    "Pueden ser localmente más destructivos",
+                    "Es frecuente la trombosis vascular"
+                ],
+                correctIndex: 0
+            },
+            {
+                text: "La tuberculosis secundaria:",
+                options: [
+                    "Ninguna",
+                    "Se observa en personas no sensibilizadas",
+                    "Afecta clásicamente las bases de los lóbulos pulmonares superiores",
+                    "Hay mayor compromiso ganglionar que en la primaria",
+                    "Todas"
+                ],
+                correctIndex: 0
+            },
+            {
+                text: "Las lesionas cavitarias o cavernosas en la evolución de la tuberculosis. Se presenta en:",
+                options: [
+                    "TBC pulmonar progresiva",
+                    "TBC primaria",
+                    "TBC miliar pulmonar",
+                    "Complejo primario",
+                    "Ninguno"
+                ],
                 correctIndex: 0
             }
         ];
@@ -334,6 +840,7 @@
                 
                 // Guardar el índice correcto mezclado
                 selectedQuestions[index].shuffledCorrectIndex = newCorrectIndex;
+                selectedQuestions[index].shuffledOptions = newOptions;
                 
                 const questionElement = document.createElement('div');
                 questionElement.className = 'question';
@@ -432,10 +939,19 @@
                         const incorrectItem = document.createElement('div');
                         incorrectItem.className = 'incorrect-item';
                         
+                        // Obtener la respuesta del usuario (si respondió)
+                        let userAnswerText = 'Sin responder';
+                        if (userAnswers[index] !== -1) {
+                            userAnswerText = question.shuffledOptions[userAnswers[index]];
+                        }
+                        
+                        // Obtener la respuesta correcta
+                        const correctAnswerText = question.shuffledOptions[question.shuffledCorrectIndex];
+                        
                         incorrectItem.innerHTML = `
                             <p><strong>Pregunta ${index + 1}:</strong> ${question.text}</p>
-                            <p class="user-answer">Tu respuesta: ${userAnswers[index] !== -1 ? question.options[question.correctIndex] : 'Sin responder'}</p>
-                            <p class="correct-answer">Respuesta correcta: ${question.options[question.correctIndex]}</p>
+                            <p class="user-answer">Tu respuesta: ${userAnswerText}</p>
+                            <p class="correct-answer">Respuesta correcta: ${correctAnswerText}</p>
                         `;
                         
                         incorrectContainer.appendChild(incorrectItem);
