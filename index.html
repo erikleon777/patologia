@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador de examen de Patología Médica - Dr. Sangüeza</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            color: #333;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #3498db;
+        }
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-size: 2.2rem;
+        }
+        .instructions {
+            background-color: #e8f4fc;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+        }
+        .question {
+            margin-bottom: 25px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            background-color: #fff;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+        }
+        .question-number {
+            display: inline-block;
+            background: #3498db;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 30px;
+            margin-right: 10px;
+            font-weight: bold;
+        }
+        .question-text {
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: #2c3e50;
+            font-size: 1.1rem;
+        }
+        .options {
+            margin-left: 10px;
+        }
+        .option {
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 5px;
+            transition: background-color 0.2s;
+        }
+        .option:hover {
+            background-color: #f8f9fa;
+        }
+        .option input {
+            margin-right: 10px;
+        }
+        button {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1.1rem;
+            margin-top: 20px;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+        button:hover {
+            background-color: #2980b9;
+            transform: translateY(-2px);
+        }
+        button:active {
+            transform: translateY(0);
+        }
+        .results {
+            display: none;
+            margin-top: 30px;
+            padding: 25px;
+            border-radius: 10px;
+            background-color: #f8f9fa;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+        }
+        .score-container {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+        .score {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #2c3e50;
+            margin: 10px 0;
+        }
+        .score-text {
+            font-size: 1.2rem;
+            color: #7f8c8d;
+        }
+        .incorrect-questions {
+            margin-top: 20px;
+        }
+        .incorrect-item {
+            margin-bottom: 20px;
+            padding: 15px;
+            border-left: 5px solid #e74c3c;
+            background-color: #fdedec;
+            border-radius: 5px;
+        }
+        .correct-answer {
+            color: #27ae60;
+            font-weight: bold;
+            margin-top: 5px;
+        }
+        .user-answer {
+            color: #e74c3c;
+            font-weight: bold;
+            margin-top: 5px;
+        }
+        .progress-bar {
+            height: 10px;
+            background-color: #ecf0f1;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            overflow: hidden;
+        }
+        .progress {
+            height: 100%;
+            background-color: #3498db;
+            width: 0%;
+            transition: width 0.5s ease-in-out;
+        }
+        @media (max-width: 600px) {
+            .container {
+                padding: 15px;
+            }
+            h1 {
+                font-size: 1.8rem;
+            }
+            .question {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h2>Simulador de examen de Patología Médica - Dr. Sangüeza</h2>
+            <p>Responde 15 preguntas seleccionadas aleatoriamente</p>
+        </header>
+        
+        <div class="instructions">
+            <p><strong>Instrucciones:</strong> Selecciona la respuesta correcta para cada pregunta. Al finalizar, haz clic en "Enviar respuestas" para ver tu puntuación y las preguntas incorrectas.</p>
+        </div>
+        
+        <div class="progress-bar">
+            <div class="progress" id="progress"></div>
+        </div>
+        
+        <div id="quiz-container">
+            <!-- Las preguntas se insertarán aquí dinámicamente -->
+        </div>
+        
+        <button id="submit-btn">Enviar respuestas</button>
+        
+        <div id="results" class="results">
+            <div class="score-container">
+                <div class="score-text">Tu puntuación:</div>
+                <div class="score"><span id="score-value">0</span>/15</div>
+                <div id="score-message"></div>
+            </div>
+            <div id="incorrect-questions" class="incorrect-questions">
+                <!-- Las preguntas incorrectas se mostrarán aquí -->
+            </div>
+            <button id="restart-btn">Intentar de nuevo</button>
+        </div>
+    </div>
+
+    <script>
+        // Datos de las preguntas (solo algunas como ejemplo)
+        const questions = [
+            {
+                text: "El factor de riesgo más importante para la disección aórtica es",
+                options: ["Ateroesclerosis", "Sífilis terciaria", "Hipertensión arterial", "Aneurisma falso", "Ninguno"],
+                correctIndex: 2
+            },
+            {
+                text: "Qué patologías pueden estar relacionadas con bronquiectasias?",
+                options: ["Todas", "Tumores que produzcan obstrucción bronquial", "Síndrome de Kartagener", "Fibrosis quística", "Neumonitis necrotizante"],
+                correctIndex: 0
+            },
+            {
+                text: "El tabaquismo aumenta la incidencia de cáncer de:",
+                options: ["Todos", "Esófago", "Páncreas", "Vejiga urinaria", "Pulmón"],
+                correctIndex: 0
+            },
+            {
+                text: "El cor pulmonale crónico es secundario a:",
+                options: ["Fibrosis pulmonar intersticial", "Hipertensión sistémica", "Aneurismas sifilíticos", "Coartación de la aorta", "Ninguno"],
+                correctIndex: 0
+            },
+            {
+                text: "La esclerosis cardiaca es una condición patológica asociada a:",
+                options: ["Hipertensión arterial", "Coartación aórtica", "Insuficiencia ventricular derecha", "Hipertrofia ventricular izquierda", "Ninguno"],
+                correctIndex: 0
+            },
+            {
+                text: "Qué forma de endocarditis presentan vegetaciones:",
+                options: ["Todas", "E. infecciosa", "E. Libman Sacks", "E. trombótica no bacteriana", "E. reumática aguda"],
+                correctIndex: 0
+            },
+            {
+                text: "En la evolución del infarto de miocardio, el tejido de granulación y depósito de colágeno aparece en:",
+                options: ["10-14 días", "2-8 semanas", "12-24 hrs", "Ninguno", "3-7 días"],
+                correctIndex: 0
+            },
+            {
+                text: "El Helicobacter pylori es causante de los siguientes, EXCEPTO:",
+                options: ["Linfoma gástrico", "Gastritis granulomatosa", "Gastritis crónica", "Adenocarcinoma gástrico", "Enfermedad de Menetrier"],
+                correctIndex: 1
+            },
+            {
+                text: "En la hipertensión maligna los vasos presentan los siguientes cambios en su pared, EXCEPTO:",
+                options: ["Depósitos hialinos", "Focos de calcificación", "Engrosamiento concéntrico", "Duplicación de la membrana basal", "Estenosis luminal"],
+                correctIndex: 0
+            },
+            {
+                text: "Lo siguiente se relaciona con el esófago de Barret, EXCEPTO:",
+                options: ["La mayoría de los portadores no desarrollan tumor maligno", "Consecuencia de reflujo GE", "Mucosa color rojo asalmonada", "Solo puede identificarse por endoscopía y biopsia", "Metaplasia escamosa"],
+                correctIndex: 4
+            },
+            {
+                text: "Qué diagnostico sospecharía si en una biopsia de intestino delgado se encuentran macrófagos con hematíes en su interior:",
+                options: ["Salmonelosis", "Esprúe tropical", "Enfermedad celiaca", "Amebiasis", "Ninguna"],
+                correctIndex: 0
+            },
+            {
+                text: "La enfermedad más frecuente asociada con la osteoartropatía hipertrófica es:",
+                options: ["Carcinoma broncogenico", "Endocarditis infecciosa", "Enfermedad cardiaca congénita", "Colitis ulcerosa", "Mesotelioma pleural"],
+                correctIndex: 0
+            },
+            {
+                text: "La afectación de la TBC miliar se presenta principalmente en:",
+                options: ["Todos", "Médula ósea", "Bazo", "Adrenales", "Hígado"],
+                correctIndex: 0
+            },
+            {
+                text: "Las siguientes son causas de insuficiencia cardiaca izquierda, EXCEPTO:",
+                options: ["Cor pulmonale", "Estenosis mitral", "Hipertensión arterial sistémica", "Estenosis aórtica", "Pericarditis constrictivas"],
+                correctIndex: 0
+            },
+            {
+                text: "La cardiopatía congénita más común:",
+                options: ["Comunicación interventricular", "Comunicación interauricular", "Tetralogía de Fallot", "Conducto arterioso persistente", "Ninguno"],
+                correctIndex: 0
+            },
+            {
+                text: "El engrosamiento focal de las paredes de arterias musculares por hiperplasia y fibrosis de la media e íntima puede causar:",
+                options: ["Displasia fibromuscular", "Aneurisma sacular", "Fistula arteriovenosas", "Conducto arterioso persistente", "Ninguno"],
+                correctIndex: 0
+            },
+            {
+                text: "Causa neurológica de hipertensión secundaria:",
+                options: ["Apnea del sueño", "Feocromocitoma", "Tumores productores de renina", "Embarazo", "Acromegalia"],
+                correctIndex: 0
+            },
+            {
+                text: "Qué vasos sanguíneos son los principales puntos de resistencia fisiológico al flujo sanguíneo:",
+                options: ["Arteriolas", "Vénulas poscapilares", "Lecho capilar", "Ninguna", "Arteriolas musculares"],
+                correctIndex: 0
+            }
+        ];
+
+        // Variables globales
+        let selectedQuestions = [];
+        let userAnswers = [];
+
+        // Función para seleccionar preguntas aleatorias
+        function selectRandomQuestions() {
+            // Hacer una copia del array de preguntas
+            const shuffled = [...questions].sort(() => 0.5 - Math.random());
+            // Seleccionar las primeras 15
+            selectedQuestions = shuffled.slice(0, 15);
+        }
+
+        // Función para mezclar opciones de respuesta
+        function shuffleOptions(options, correctIndex) {
+            const optionsWithIndex = options.map((option, index) => ({ option, index }));
+            const shuffled = optionsWithIndex.sort(() => 0.5 - Math.random());
+            const newCorrectIndex = shuffled.findIndex(item => item.index === correctIndex);
+            const newOptions = shuffled.map(item => item.option);
+            return { newOptions, newCorrectIndex };
+        }
+
+        // Función para renderizar las preguntas
+        function renderQuestions() {
+            const quizContainer = document.getElementById('quiz-container');
+            quizContainer.innerHTML = '';
+            
+            selectedQuestions.forEach((question, index) => {
+                // Mezclar las opciones de respuesta
+                const { newOptions, newCorrectIndex } = shuffleOptions(question.options, question.correctIndex);
+                
+                // Guardar el índice correcto mezclado
+                selectedQuestions[index].shuffledCorrectIndex = newCorrectIndex;
+                
+                const questionElement = document.createElement('div');
+                questionElement.className = 'question';
+                
+                const questionText = document.createElement('div');
+                questionText.className = 'question-text';
+                questionText.innerHTML = `<span class="question-number">${index + 1}</span> ${question.text}`;
+                
+                const optionsContainer = document.createElement('div');
+                optionsContainer.className = 'options';
+                
+                newOptions.forEach((option, optionIndex) => {
+                    const optionElement = document.createElement('div');
+                    optionElement.className = 'option';
+                    
+                    const radio = document.createElement('input');
+                    radio.type = 'radio';
+                    radio.name = `question-${index}`;
+                    radio.value = optionIndex;
+                    radio.id = `q${index}-o${optionIndex}`;
+                    
+                    const label = document.createElement('label');
+                    label.htmlFor = `q${index}-o${optionIndex}`;
+                    label.textContent = option;
+                    
+                    optionElement.appendChild(radio);
+                    optionElement.appendChild(label);
+                    optionsContainer.appendChild(optionElement);
+                });
+                
+                questionElement.appendChild(questionText);
+                questionElement.appendChild(optionsContainer);
+                quizContainer.appendChild(questionElement);
+            });
+            
+            // Actualizar barra de progreso
+            document.getElementById('progress').style.width = '0%';
+        }
+
+        // Función para verificar las respuestas
+        function checkAnswers() {
+            userAnswers = [];
+            let score = 0;
+            let answered = 0;
+            
+            selectedQuestions.forEach((question, index) => {
+                const selectedOption = document.querySelector(`input[name="question-${index}"]:checked`);
+                const userAnswer = selectedOption ? parseInt(selectedOption.value) : -1;
+                userAnswers.push(userAnswer);
+                
+                if (userAnswer !== -1) {
+                    answered++;
+                }
+                
+                if (userAnswer === question.shuffledCorrectIndex) {
+                    score++;
+                }
+            });
+            
+            // Actualizar barra de progreso
+            document.getElementById('progress').style.width = `${(answered / selectedQuestions.length) * 100}%`;
+            
+            return score;
+        }
+
+        // Función para mostrar los resultados
+        function showResults(score) {
+            const resultsContainer = document.getElementById('results');
+            const scoreElement = document.getElementById('score-value');
+            const scoreMessage = document.getElementById('score-message');
+            const incorrectContainer = document.getElementById('incorrect-questions');
+            
+            scoreElement.textContent = score;
+            
+            // Mensaje según el puntaje
+            if (score >= 13) {
+                scoreMessage.textContent = "¡Excelente! Tu conocimiento es muy sólido.";
+                scoreMessage.style.color = "#27ae60";
+            } else if (score >= 10) {
+                scoreMessage.textContent = "Buen trabajo, pero hay espacio para mejorar.";
+                scoreMessage.style.color = "#f39c12";
+            } else {
+                scoreMessage.textContent = "Sigue estudiando, puedes mejorar.";
+                scoreMessage.style.color = "#e74c3c";
+            }
+            
+            incorrectContainer.innerHTML = '';
+            
+            if (score === 15) {
+                incorrectContainer.innerHTML = '<p>¡Felicidades! Has respondido correctamente todas las preguntas.</p>';
+            } else {
+                incorrectContainer.innerHTML = '<h3>Preguntas incorrectas:</h3>';
+                
+                selectedQuestions.forEach((question, index) => {
+                    if (userAnswers[index] !== question.shuffledCorrectIndex) {
+                        const incorrectItem = document.createElement('div');
+                        incorrectItem.className = 'incorrect-item';
+                        
+                        incorrectItem.innerHTML = `
+                            <p><strong>Pregunta ${index + 1}:</strong> ${question.text}</p>
+                            <p class="user-answer">Tu respuesta: ${userAnswers[index] !== -1 ? question.options[question.correctIndex] : 'Sin responder'}</p>
+                            <p class="correct-answer">Respuesta correcta: ${question.options[question.correctIndex]}</p>
+                        `;
+                        
+                        incorrectContainer.appendChild(incorrectItem);
+                    }
+                });
+            }
+            
+            resultsContainer.style.display = 'block';
+            document.getElementById('submit-btn').style.display = 'none';
+            window.scrollTo(0, document.body.scrollHeight);
+        }
+
+        // Inicializar el quiz
+        function initQuiz() {
+            selectRandomQuestions();
+            renderQuestions();
+            userAnswers = [];
+            
+            document.getElementById('results').style.display = 'none';
+            document.getElementById('submit-btn').style.display = 'block';
+            document.getElementById('submit-btn').addEventListener('click', () => {
+                const score = checkAnswers();
+                showResults(score);
+            });
+            
+            document.getElementById('restart-btn').addEventListener('click', initQuiz);
+        }
+
+        // Iniciar cuando el documento esté listo
+        document.addEventListener('DOMContentLoaded', initQuiz);
+    </script>
+</body>
+</html>
