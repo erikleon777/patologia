@@ -977,12 +977,14 @@
                 showResults(score);
             });
             
-            document.getElementById('restart-btn').addEventListener('click', initQuiz);
-        }
+            document.getElementById('restart-btn').addEventListener('click', function() {
+    location.reload();
+});        }
 
         // Iniciar cuando el documento esté listo
         document.addEventListener('DOMContentLoaded', initQuiz);
     </script>
 </body>
 </html>
+
 
