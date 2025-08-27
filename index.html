@@ -977,14 +977,18 @@
                 showResults(score);
             });
             
+       // Iniciar cuando el documento esté listo (MODIFICADO)
+        document.addEventListener('DOMContentLoaded', function() {
+            initQuiz();
+            
+            // Asignar el evento al botón de reinicio (MODIFICADO)
             document.getElementById('restart-btn').addEventListener('click', function() {
-    location.reload();
-});        }
-
-        // Iniciar cuando el documento esté listo
-        document.addEventListener('DOMContentLoaded', initQuiz);
+                initQuiz();
+            });
+        });
     </script>
 </body>
 </html>
+
 
 
