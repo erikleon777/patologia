@@ -963,8 +963,7 @@
             document.getElementById('submit-btn').style.display = 'none';
             window.scrollTo(0, document.body.scrollHeight);
         }
-
-        // Inicializar el quiz
+// Inicializar el quiz (MODIFICADO)
         function initQuiz() {
             selectRandomQuestions();
             renderQuestions();
@@ -972,19 +971,24 @@
             
             document.getElementById('results').style.display = 'none';
             document.getElementById('submit-btn').style.display = 'block';
+            
+            // Hacer scroll al inicio de la página
+            window.scrollTo(0, 0);
+            
             document.getElementById('submit-btn').addEventListener('click', () => {
                 const score = checkAnswers();
                 showResults(score);
             });
-            
-       // Iniciar cuando el documento esté listo (MODIFICADO)
+        }
+
+        // Iniciar cuando el documento esté listo (MODIFICADO)
         document.addEventListener('DOMContentLoaded', function() {
             initQuiz();
             
             // Asignar el evento al botón de reinicio (MODIFICADO)
             document.getElementById('restart-btn').addEventListener('click', function() {
                 initQuiz();
-                            });
+            });
         });
     </script>
 </body>
